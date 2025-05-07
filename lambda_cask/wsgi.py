@@ -48,7 +48,7 @@ def create_environ(event, context):
     """https://peps.python.org/pep-3333/#environ-variables"""
 
     if event.get("isBase64Encoded", False):
-        body = base64.b64decode(body)
+        body = base64.b64decode(event.get("body", ""))
     else:
         body = event.get("body", "").encode("utf-8")
 
